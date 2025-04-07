@@ -1,7 +1,6 @@
 <?php
-session_start();
 $usuario = 'admin';
-$senhaHash = password_hash('123456', PASSWORD_DEFAULT); // pode salvar o hash real no código
+$senhaHash = password_hash('admin', PASSWORD_DEFAULT);
 $erro = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
