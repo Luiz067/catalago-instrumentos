@@ -63,38 +63,54 @@ include 'dados/itens.php';
     <div class="alert alert-info"><?= $mensagem ?></div>
 <?php endif; ?>
 
-<button class="btn btn-success mb-4" onclick="document.getElementById('formCadastro').classList.toggle('d-none')">
+<!-- Botão para abrir o Modal -->
+<button class="btn btn-success mb-4" data-bs-toggle="modal" data-bs-target="#cadastroModal">
     + Novo Item
 </button>
-<div id="formCadastro" class="card p-4 mb-5 d-none">
-    <form method="POST" enctype="multipart/form-data">
-        <div class="mb-3">
-            <label class="form-label">Título</label>
-            <input name="titulo" class="form-control" required>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Categoria</label>
-            <select name="categoria" class="form-select" required>
-                <option value="">Selecione</option>
-                <option value="Cordas">Cordas</option>
-                <option value="Percussão">Percussão</option>
-                <option value="Teclas">Teclas</option>
-                <option value="Sopro">Sopro</option>
-                <option value="Eletrônicos">Eletrônicos</option>
-                <option value="Acessórios">Acessórios</option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Imagem (arquivo)</label>
-            <input type="file" name="imagem" class="form-control" accept="image/*" required>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Descrição</label>
-            <textarea name="descricao" class="form-control" rows="3" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
-    </form>
+
+<!-- Modal de cadastro -->
+<div class="modal fade" id="cadastroModal" tabindex="-1" aria-labelledby="cadastroModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cadastroModalLabel">Cadastrar Novo Item</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Formulário de cadastro -->
+        <form method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label">Título</label>
+                <input name="titulo" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Categoria</label>
+                <select name="categoria" class="form-select" required>
+                    <option value="">Selecione</option>
+                    <option value="Cordas">Cordas</option>
+                    <option value="Percussão">Percussão</option>
+                    <option value="Teclas">Teclas</option>
+                    <option value="Sopro">Sopro</option>
+                    <option value="Eletrônicos">Eletrônicos</option>
+                    <option value="Acessórios">Acessórios</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Imagem (arquivo)</label>
+                <input type="file" name="imagem" class="form-control" accept="image/*" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Descrição</label>
+                <textarea name="descricao" class="form-control" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- Listagem de itens -->
 <div class="row">
     <?php
     // Pegando o valor da pesquisa
@@ -124,3 +140,6 @@ include 'dados/itens.php';
 </div>
 
 <?php include 'includes/rodape.php'; ?>
+<!-- Bootstrap JS (Requer o Popper.js) -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
