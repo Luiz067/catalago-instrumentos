@@ -1,4 +1,5 @@
 <?php
+session_start();
 $usuario = 'admin';
 $senhaHash = password_hash('admin', PASSWORD_DEFAULT);
 $erro = '';

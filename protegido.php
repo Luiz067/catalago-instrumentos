@@ -96,7 +96,14 @@ include 'dados/itens.php';
     </form>
 </div>
 <div class="row">
-    <?php foreach ($itens as $item): ?>
+    <?php
+    // Pegando o valor da pesquisa
+    $pesquisa = $_GET['search'] ?? '';
+
+    // Filtrando os itens com base no nome
+    foreach ($itens as $item):
+        if ($pesquisa && stripos($item['titulo'], $pesquisa) === false) continue; // Pesquisa case-insensitive
+    ?>
         <div class="col-md-4 mb-3">
             <div class="card h-100">
                 <img src="<?= $item['imagem'] ?>" class="card-img-top"

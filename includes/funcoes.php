@@ -5,4 +5,3 @@ function buscarItemPorId($id, $itens) {
     }
     return null;
 }
-?>
